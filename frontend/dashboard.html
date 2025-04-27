@@ -1,0 +1,177 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Parking Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="dashboard.js" defer></script> -->
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>🚗 Smart Parking Dashboard</h1>
+      <div class="user-info">
+        <span id="userName">Loading...</span>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <h3>Total Slots</h3>
+        <p id="totalSlots">-</p>
+      </div>
+      <div class="stat-card available">
+        <h3>Available</h3>
+        <p id="availableSlots">-</p>
+      </div>
+      <div class="stat-card occupied">
+        <h3>Occupied</h3>
+        <p id="occupiedSlots">-</p>
+      </div>
+    </div>
+
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" data-tab="slotMap">Slot Map</button>
+      <button class="tab-btn" data-tab="activeBooking">Active Booking</button>
+      <button class="tab-btn" data-tab="history">History</button>
+    </div>
+
+    <!-- Slot Map Tab -->
+    <div class="tab-content active" id="slotMap">
+      <h2>Parking Slot Map</h2>
+      <div class="parking-map">
+        <!-- Dynamic Slot Display -->
+        <div id="slotsGrid" class="slots-grid">
+          <!-- Slots will be injected here via JavaScript -->
+        </div>
+      </div>
+      <div class="action-panel">
+        <button id="bookSlotBtn" class="primary-btn">Book Available Slot</button>
+      </div>
+    </div>
+
+    <!-- Active Booking Tab -->
+    <div class="tab-content" id="activeBooking">
+      <h2>Your Active Booking</h2>
+      <div id="noActiveBooking" class="message-box">
+        <p>You don't have any active bookings</p>
+      </div>
+      <div id="activeBookingDetails" class="booking-details" style="display:none;">
+        <div class="detail-row">
+          <span>Slot Number:</span>
+          <span id="activeSlotId">-</span>
+        </div>
+        <div class="detail-row">
+          <span>Entry Time:</span>
+          <span id="activeEntryTime">-</span>
+        </div>
+        <div class="detail-row">
+          <span>Duration:</span>
+          <span id="activeDuration">-</span>
+        </div>
+        <div class="detail-row">
+          <span>Deposit Amount:</span>
+          <span id="activeDeposit">₹0</span>
+        </div>
+        <div class="detail-row highlight">
+          <span>Current Charge:</span>
+          <span id="activeCharge">₹0</span>
+        </div>
+        
+        <div class="gate-controls">
+          <button id="entryGateBtn" class="action-btn">Open Entry Gate</button>
+          <button id="exitGateBtn" class="action-btn">Open Exit Gate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- History Tab -->
+    <div class="tab-content" id="history">
+      <h2>Booking History</h2>
+      <div class="history-list">
+        <table id="historyTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Slot</th>
+              <th>Duration</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- History items will be injected here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Complete Payment</h2>
+        
+        <div class="payment-details">
+          <div class="detail-row">
+            <span>Amount:</span>
+            <span id="paymentAmount">₹100</span>
+          </div>
+          <div class="detail-row">
+            <span>Purpose:</span>
+            <span id="paymentPurpose">Booking Deposit</span>
+          </div>
+        </div>
+        
+        <!-- Simulated payment form -->
+        <div class="payment-form">
+          <div class="input-group">
+            <label>Card Number</label>
+            <input type="text" placeholder="4242 4242 4242 4242" maxlength="19">
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label>Expiry</label>
+              <input type="text" placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="input-group">
+              <label>CVV</label>
+              <input type="text" placeholder="123" maxlength="3">
+            </div>
+          </div>
+        </div>
+        
+        <button id="completePaymentBtn" class="primary-btn">Pay Now</button>
+      </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" class="modal">
+      <div class="modal-content receipt">
+        <span class="close-btn">&times;</span>
+        <div id="receiptContent">
+          <div class="receipt-header">
+            <h2>Smart Parking Receipt</h2>
+            <p id="receiptType">Booking Receipt</p>
+          </div>
+          
+          <div class="receipt-details">
+            <!-- Receipt details will be injected here -->
+          </div>
+          
+          <div class="receipt-footer">
+            <p>Thank you for using Smart Parking!</p>
+          </div>
+        </div>
+        
+        <div class="receipt-actions">
+          <button id="downloadReceiptBtn" class="action-btn">Download PDF</button>
+          <button id="closeReceiptBtn" class="action-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

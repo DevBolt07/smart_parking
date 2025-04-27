@@ -1,0 +1,80 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Smart Parking System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="admin.js" defer></script>  -->
+
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>🛡️ Admin Dashboard</h1>
+      <div class="user-info">
+        <span id="adminName">Admin</span>
+        <button id="adminLogoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" data-tab="manageSlots">Manage Slots</button>
+      <button class="tab-btn" data-tab="manageUsers">Manage Users</button>
+      <button class="tab-btn" data-tab="viewBookings">Bookings</button>
+    </div>
+
+    <!-- Manage Slots Tab -->
+    <div class="tab-content active" id="manageSlots">
+      <h2>Parking Slots</h2>
+      <div class="parking-map">
+        <div id="adminSlotsGrid" class="slots-grid">
+          <!-- Slots will be dynamically injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage Users Tab -->
+    <div class="tab-content" id="manageUsers">
+      <h2>Registered Users</h2>
+      <div class="history-list">
+        <table id="usersTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Vehicle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- User records will appear here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- View Bookings Tab -->
+    <div class="tab-content" id="viewBookings">
+      <h2>All Bookings</h2>
+      <div class="history-list">
+        <table id="bookingsTable">
+          <thead>
+            <tr>
+              <th>Slot</th>
+              <th>User</th>
+              <th>Entry Time</th>
+              <th>Exit Time</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Booking records will appear here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
